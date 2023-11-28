@@ -18,7 +18,7 @@ st.title("Text Search 📝")
 
 
 # env variable
-DATA_FILEPATH = "abc.tsv"
+DATA_FILEPATH = "litcovid.export.all.tsv"
 
 # First, we load a TSV as a dataframe and cache the data:
 @st.cache
