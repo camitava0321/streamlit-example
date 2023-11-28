@@ -24,7 +24,7 @@ DATA_FILEPATH = "abc.tsv"
 @st.cache
 def load_data(filepath:str) -> pd.DataFrame:
     """ Load data from local TSV """
-    return pd.read_csv(filepath, sep=",", skiprows=33).fillna("")
+    return pd.read_csv(filepath, sep="\\t", skiprows=33).fillna("")
 
 #Next, we create a function to search the dataframe. 
 # This is done by checking to see if a column has rows 
