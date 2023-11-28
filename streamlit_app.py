@@ -63,7 +63,30 @@ if submit_button:
   st.table(results.head(n=10))
 
 
-#st.success(f"Search is complete :rocket:")
+# One of the best features of Streamlit is 
+# interactive plotting and visualization. 
+# At ScienceIO, we love to use Altair plots which are easily converted from static to dynamic. 
+# Let’s add an interactive bar plot that shows the top journals in our search results.
+
+# we can use altair to turn our results dataframe into a bar chart of top journal
+import altair as alt
+
+alt.Chart(results).transform_aggregate(
+        count='count()',
+        groupby=['journal']
+    ).transform_window(
+        rank='rank(count)',
+        sort=[alt.SortField('count', order='descending')]
+    ).transform_filter(
+        alt.datum.rank < 10
+    ).mark_bar().encode(
+        y=alt.Y('journal:N', sort='-x'),
+        x='count:Q',
+        tooltip=['journal:N', 'count:Q']
+    ).properties(
+        width=700,
+        height=400
+		).interactive()
 
 
 
