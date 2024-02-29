@@ -23,7 +23,6 @@ def search_dataframe(df:pd.DataFrame, column:str, search_str:str) -> pd.DataFram
     results = df.loc[df[column].str.contains(search_str, case=False)]
     return results
 
-
 # One of the best features of Streamlit is 
 # interactive plotting and visualization. 
 # At ScienceIO, we love to use Altair plots which are easily converted from static to dynamic. 
